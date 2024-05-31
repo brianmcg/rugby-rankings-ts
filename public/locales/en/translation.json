@@ -1,0 +1,63 @@
+{
+  "languages": {
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish"
+  },
+  "app": {
+    "header": {
+      "title": "Rugby Rankings"
+    },
+    "footer": {
+      "author": "Created by Brian McGrath",
+      "github": "See Github for source code",
+      "rankings": "Rankings and algorithm are the property of World Rugby"
+    },
+    "errors": {
+      "fetch": "Failed to load data!"
+    },
+    "main": {
+      "updated": "Updated",
+      "add": "Add Fixture",
+      "clear": "Clear Fixtures",
+      "reset": "Reset Fixtures",
+      "tabs": {
+        "mru": "Mens",
+        "wru": "Womens"
+      },
+      "rankings": {
+        "title": "{{label}} Rankings",
+        "expand": "Show Full Table",
+        "collapse": "Hide Full Table",
+        "table": {
+          "team": "Team",
+          "rank": "Rank",
+          "points": "Points"
+        }
+      },
+      "matches": {
+        "title": "Fixtures {{range}}",
+        "predict": "Predict",
+        "update": "Update",
+        "clear": "Clear",
+        "add": "Add",
+        "remove": "Remove",
+        "neutral": "Neutral Venue",
+        "created": "Created by user",
+        "empty": "Add fixtures from the menu",
+        "vs": "vs"
+      },
+      "modal": {
+        "title": "Predict Score",
+        "team": "Team",
+        "home": "Home Team",
+        "away": "Away Team",
+        "score": "Score",
+        "neutral": "Neutral Venue",
+        "rwc": "Rugby World Cup",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+      }
+    }
+  }
+}

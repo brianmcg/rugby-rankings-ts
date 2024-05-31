@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Webb Ellis Cup';
+    src: url('/src/assets/fonts/WebbEllisCup-Bold.eot');
+    src: local('Webb Ellis Cup Bold'), local('/src/assets/fonts/WebbEllisCup-Bold'),
+        url('/src/assets/fonts/WebbEllisCup-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/src/assets/fonts/WebbEllisCup-Bold.woff2') format('woff2'),
+        url('/src/assets/fonts/WebbEllisCup-Bold.woff') format('woff'),
+        url('/src/assets/fonts/WebbEllisCup-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Webb Ellis Cup';
+    src: url('/src/assets/fonts/WebbEllisCup-HeavyItalic.eot');
+    src: local('Webb Ellis Cup Heavy Italic'), local('/src/assets/fonts/WebbEllisCup-HeavyItalic'),
+        url('/src/assets/fonts/WebbEllisCup-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+        url('/src/assets/fonts/WebbEllisCup-HeavyItalic.woff2') format('woff2'),
+        url('/src/assets/fonts/WebbEllisCup-HeavyItalic.woff') format('woff'),
+        url('/src/assets/fonts/WebbEllisCup-HeavyItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Webb Ellis Cup';
+    src: url('/src/assets/fonts/WebbEllisCup.eot');
+    src: local('Webb Ellis Cup Regular'), local('/src/assets/fonts/WebbEllisCup'),
+        url('/src/assets/fonts/WebbEllisCup.eot?#iefix') format('embedded-opentype'),
+        url('/src/assets/fonts/WebbEllisCup.woff2') format('woff2'),
+        url('/src/assets/fonts/WebbEllisCup.woff') format('woff'),
+        url('/src/assets/fonts/WebbEllisCup.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Webb Ellis Cup';
+    src: url('/src/assets/fonts/WebbEllisCup-Heavy.eot');
+    src: local('Webb Ellis Cup Heavy Regular'), local('/src/assets/fonts/WebbEllisCup-Heavy'),
+        url('/src/assets/fonts/WebbEllisCup-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('/src/assets/fonts/WebbEllisCup-Heavy.woff2') format('woff2'),
+        url('/src/assets/fonts/WebbEllisCup-Heavy.woff') format('woff'),
+        url('/src/assets/fonts/WebbEllisCup-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*body {
+  min-height: 100vh;
+  margin: 20px;
+}
+*/
