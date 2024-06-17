@@ -1,19 +1,9 @@
-import type { Team, Entry, ParsedMatch } from '@types';
+import type { Data } from '@types';
 
 const cache = new Map();
 
 type CacheProps = {
   dataKey: string;
-};
-
-type ValueProps = {
-  sport: string;
-  label: string;
-  teams: Team[];
-  rankings: Entry[];
-  matches: ParsedMatch[];
-  startDate: string;
-  endDate: string;
 };
 
 export default function Cache(props: CacheProps) {
@@ -26,7 +16,7 @@ export default function Cache(props: CacheProps) {
       return cache.has(key);
     },
 
-    set(key: string, value: ValueProps) {
+    set(key: string, value: Data) {
       return cache.set(key, value);
     },
 
@@ -43,3 +33,35 @@ export default function Cache(props: CacheProps) {
     },
   };
 }
+
+// export default class Cache {
+//   private dataKey: string;
+
+//   constructor(props: CacheProps) {
+//     this.dataKey = props.dataKey;
+//   }
+
+//   getDataKey() {
+//     return this.dataKey;
+//   }
+
+//   has(key: string) {
+//     return cache.has(key);
+//   }
+
+//   set(key: string, value: Data) {
+//     return cache.set(key, value);
+//   }
+
+//   get(key: string) {
+//     return cache.get(key);
+//   }
+
+//   delete(key: string) {
+//     return cache.delete(key);
+//   }
+
+//   clear() {
+//     return cache.clear();
+//   }
+// }

@@ -53,3 +53,24 @@ export type ParsedMatch = {
   isWorldCup: boolean;
   isComplete: boolean;
 };
+
+export type Data = {
+  sport: string;
+  label: string;
+  teams: Team[];
+  rankings: Entry[];
+  matches: ParsedMatch[];
+  startDate: string;
+  endDate: string;
+};
+
+export type State = {
+  data: Data;
+  initialData: { mru: Data, wru: Data };
+  isError: boolean;
+  isLoading: boolean;
+  selectedMatch: ParsedMatch | null;
+  sport: string;
+};
+
+
