@@ -1,6 +1,6 @@
 import type { Entry, ParsedMatch } from '@types';
 
-function calculatePointsChanges(rankings: Entry[], match: ParsedMatch) : Entry[] {
+function calculatePointsChanges(rankings: Array<Entry>, match: ParsedMatch) : Array<Entry> {
   let ratingGap;
   let ratingChange;
 
@@ -8,6 +8,9 @@ function calculatePointsChanges(rankings: Entry[], match: ParsedMatch) : Entry[]
 
   const homeEntry = rankings.find(entry => entry.team.id === homeTeam.id);
   const awayEntry = rankings.find(entry => entry.team.id === awayTeam.id);
+
+  if (homeScore === null) throw Error('Home score must be defined');
+  if (awayScore === null) throw Error('Away score must be defined');
 
   if (!homeEntry) throw Error('Home team must be defined');
   if (!awayEntry) throw Error('Away team must be defined');
@@ -73,9 +76,9 @@ function calculatePointsChanges(rankings: Entry[], match: ParsedMatch) : Entry[]
   });
 }
 
-export function calculateRankingChange(rankings: Entry[], matches: ParsedMatch[]) {
+export function calculateRankingChange(rankings: Array<Entry>, matches: Array<ParsedMatch>): Array<Entry> {
   return matches
-    .reduce((memo: Entry[], match: ParsedMatch) : Entry[] => {
+    .reduce((memo: Array<Entry>, match: ParsedMatch) : Array<Entry> => {
       if (match.isComplete) {
         return calculatePointsChanges(memo, match);
       }

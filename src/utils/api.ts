@@ -22,7 +22,7 @@ async function axiosGet(url: string, params = {}) {
   }
 }
 
-export async function fetchCountries(teamIds: string[]) {
+export async function fetchCountries(teamIds: Array<string>) {
   const requests = teamIds.map(id => axiosGet(`${TEAMS}/${id}`));
   const teams = await axios.all(requests);
 
@@ -35,7 +35,7 @@ export function fetchRankings(sport: string, date: Date) {
   });
 }
 
-async function fetchMatches(sport: string, startDate: Date, endDate: Date, rankings: Entry[]) {
+async function fetchMatches(sport: string, startDate: Date, endDate: Date, rankings: Array<Entry>) {
   const rankedTeamIds = rankings.map(entry => entry.team.id);
 
   const response = await axiosGet(FIXTURES, {

@@ -32,10 +32,10 @@ export type Match = {
   matchId: string;
   outcome: string;
   rankingsWeight: number;
-  scores: number[];
+  scores: Array<number>;
   sport: string;
   status: string;
-  teams: Team[];
+  teams: Array<Team>;
   time: Time;
   venue: Venue;
 };
@@ -44,8 +44,8 @@ export type ParsedMatch = {
   matchId: string;
   homeTeam: Team;
   awayTeam: Team;
-  homeScore: number;
-  awayScore: number;
+  homeScore: number | null;
+  awayScore: number | null;
   venue: Venue;
   time: Time;
   competition: string;
@@ -57,9 +57,9 @@ export type ParsedMatch = {
 export type Data = {
   sport: string;
   label: string;
-  teams: Team[];
-  rankings: Entry[];
-  matches: ParsedMatch[];
+  teams: Array<Team>;
+  rankings: Array<Entry>;
+  matches: Array<ParsedMatch>;
   startDate: string;
   endDate: string;
 };

@@ -12,7 +12,7 @@ type ReducerOptions = {
   payload: {
     data: Data;
     match: ParsedMatch;
-    matches: ParsedMatch[];
+    matches: Array<ParsedMatch>;
     sport: string;
     matchId: string;
   };

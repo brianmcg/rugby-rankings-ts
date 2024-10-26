@@ -1,38 +1,34 @@
-import type { Data } from '@types';
+// import type { Data } from '@types';
 
-const cache = new Map();
+export default new Map();
 
-type CacheProps = {
-  dataKey: string;
-};
+// type CacheProps = {
+//   dataKey: string;
+// };
 
-export default function Cache(props: CacheProps) {
-  const { dataKey } = props;
+// export default function Cache(props: CacheProps) {
+//   return {
+//     has(key: string): boolean {
+//       return cache.has(key);
+//     },
 
-  return {
-    dataKey,
+//     set(key: string, value: Data): Map<string, Data> {
+//       return cache.set(key, value);
+//     },
 
-    has(key: string) {
-      return cache.has(key);
-    },
+//     get(key: string): Data {
+//       return cache.get(key);
+//     },
 
-    set(key: string, value: Data) {
-      return cache.set(key, value);
-    },
+//     delete(key: string): boolean {
+//       return cache.delete(key);
+//     },
 
-    get(key: string) {
-      return cache.get(key);
-    },
-
-    delete(key: string) {
-      return cache.delete(key);
-    },
-
-    clear() {
-      return cache.clear();
-    },
-  };
-}
+//     clear() {
+//       return cache.clear();
+//     },
+//   };
+// }
 
 // export default class Cache {
 //   private dataKey: string;

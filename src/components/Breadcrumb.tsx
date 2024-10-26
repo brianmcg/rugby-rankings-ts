@@ -2,7 +2,7 @@ import { Fragment, ReactNode  } from 'react';
 import Divider from '@mui/material/Divider';
 
 type BreadcrumbProps = {
-  children: ReactNode[];
+  children: Array<ReactNode>;
 };
 
 export default function Breadcrumb(props: BreadcrumbProps) {

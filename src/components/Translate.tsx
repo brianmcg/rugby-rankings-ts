@@ -3,7 +3,7 @@ import type { TOptions } from 'i18next';
 
 type TranslateProps = {
   text: string;
-  options: TOptions;
+  options?: TOptions;
 };
 
 function Translate(props: TranslateProps) {
