@@ -1,28 +1,36 @@
-import { WORLD_CUP } from '@constants/regex';
+import { WORLD_CUP } from '@utils/regex';
 import { MATCH_STATUSES, COUNTRIES } from '@constants/data';
-import type { Venue, Team, Match, ParsedMatch } from '@types';
+
+import type { Venue, Team, Match, ParsedMatch } from '@constants/types';
 
 // The Irish team represents both Ireland and Northern Ireland, so if the venue country
 // is Northern Ireland we still want it to count as home advantage.
-function getVenueCountry(venue: Venue): string {
-  return venue?.country === COUNTRIES.NORTHERN_IRELAND ? COUNTRIES.IRELAND : venue?.country;
-}
+const getVenueCountry = (venue: Venue | null): string | undefined =>
+  venue?.country === COUNTRIES.NORTHERN_IRELAND
+    ? COUNTRIES.IRELAND
+    : venue?.country;
 
 // Ukraine don't play home games in Ukraine, but home advantage still applies.
-function respectHomeAdvantage(teams: Array<Team>): boolean {
-  return teams.some(team => team.name === COUNTRIES.UKRAINE);
-}
+const respectHomeAdvantage = (teams: Array<Team>): boolean =>
+  teams.some(team => team.name === COUNTRIES.UKRAINE);
 
-function isRWC(competition: string): boolean {
-  return WORLD_CUP.test(competition);
-}
+const isRWC = (competition: string): boolean => WORLD_CUP.test(competition);
 
-function parseMatch(match: Match): ParsedMatch {
-  const { matchId, teams, scores, status, venue, time, competition } = match;
+const parseMatch = ({
+  matchId,
+  teams,
+  scores,
+  status,
+  venue,
+  time,
+  competition,
+}: Match): ParsedMatch => {
   const venueCountry = getVenueCountry(venue);
   const indexOfVenueTeam = respectHomeAdvantage(teams)
     ? 0
-    : (venue ? teams.map(t => t.country).indexOf(venueCountry) : 0);
+    : venue
+      ? teams.map(t => t.country).indexOf(venueCountry)
+      : 0;
 
   const isNeutralVenue = indexOfVenueTeam < 0;
   const homeIndex = indexOfVenueTeam < 0 ? 0 : indexOfVenueTeam;
@@ -48,8 +56,7 @@ function parseMatch(match: Match): ParsedMatch {
     isWorldCup,
     isComplete,
   };
-}
+};
 
-export function parseMatches(matches: Array<Match>): Array<ParsedMatch> {
-  return matches.map(match => parseMatch(match));
-}
+export const parseMatches = (matches: Array<Match>): Array<ParsedMatch> =>
+  matches.map(match => parseMatch(match));

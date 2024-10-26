@@ -1,5 +1,10 @@
+import { I18nextProvider } from 'react-i18next';
+import { CssBaseline } from '@mui/material/';
+import { ThemeProvider  } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import { fetchData } from '@utils/api';
+import i18n from '@utils/i18n';
+import theme from '@utils/theme';
 import { SPORTS } from '@constants/data';
 import { ACTIONS } from './actions';
 import { useAsync, useUpdateCache } from './hooks';
@@ -50,50 +55,49 @@ export default function App() {
     type: ACTIONS.UPDATE_MATCHES, payload: { matches },
   });
 
-  const resetMatches = () => updateMatches(initialData[sport]?.matches);
-
-  const clearMatches = () => updateMatches([]);
-
   useUpdateCache(cache, data);
 
   return (
-    <>
-      <Header
-        sport={sport}
-        disabled={isLoading}
-        changeSport={changeSport}
-      />
-      <Stack sx={{ minHeight: '100vh' }} justifyContent="space-between">
-        <ResponsiveAppBar
-          startDate={startDate}
-          disabled={isLoading || isError}
-          onSelectMatch={selectMatch}
-          onResetMatches={resetMatches}
-          onClearMatches={clearMatches}
-        />
-        <Main
-          rankings={rankings}
-          label={label}
-          matches={matches}
-          teams={teams}
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <Header
           sport={sport}
-          startDate={startDate}
-          endDate={endDate}
-          isError={isError}
-          isLoading={isLoading}
-          selectMatch={selectMatch}
-          removeMatch={removeMatch}
+          disabled={isLoading}
+          changeSport={changeSport}
         />
-        <Footer />
-      </Stack>
-      <MatchModal
-        match={selectedMatch}
-        teams={teams}
-        endDate={endDate}
-        selectMatch={selectMatch}
-        addMatch={addMatch}
-        updateMatch={updateMatch}
-      />
-    </>
+        <Stack sx={{ minHeight: '100vh' }} justifyContent="space-between">
+          <ResponsiveAppBar
+            startDate={startDate}
+            disabled={isLoading || isError}
+            onSelectMatch={() => selectMatch()}
+            onResetMatches={() => updateMatches(initialData[sport]?.matches)}
+            onClearMatches={() => updateMatches([])}
+          />
+          <Main
+            rankings={rankings}
+            label={label}
+            matches={matches}
+            teams={teams}
+            sport={sport}
+            startDate={startDate}
+            endDate={endDate}
+            isError={isError}
+            isLoading={isLoading}
+            selectMatch={selectMatch}
+            removeMatch={removeMatch}
+          />
+          <Footer />
+        </Stack>
+        <MatchModal
+          match={selectedMatch}
+          teams={teams}
+          endDate={endDate}
+          selectMatch={selectMatch}
+          addMatch={addMatch}
+          updateMatch={updateMatch}
+        />
+      </ThemeProvider>
+    </I18nextProvider>
   );
 }

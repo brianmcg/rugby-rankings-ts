@@ -1,7 +1,9 @@
-export function isNumeric(value: number): boolean {
-  if (typeof value !== 'string') return false;
+export const isNumeric = (str: string): boolean => {
+  if (typeof str !== 'string') {
+    return false;
+  }
+  return !isNaN(parseFloat(str));
+};
 
-  return !isNaN(value) && !isNaN(parseFloat(value));
-}
-
-export const formatPoints = (pts: number): string => (Math.round(pts * 100) / 100).toFixed(2);
+export const formatPoints = (pts: number): string =>
+  (Math.round(pts * 100) / 100).toFixed(2);

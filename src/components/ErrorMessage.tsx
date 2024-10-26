@@ -3,13 +3,11 @@ import Typography from '@mui/material/Typography';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Translate from '@components/Translate';
 
-type ErrorMessageProps = {
+type Props = {
   message: string;
 };
 
-function ErrorMessage(props: ErrorMessageProps) {
-  const { message } = props;
-  
+export default function ErrorMessage({ message }: Props) {
   return (
     <Stack
       direction="row"
@@ -25,5 +23,3 @@ function ErrorMessage(props: ErrorMessageProps) {
     </Stack>
   );
 }
-
-export default ErrorMessage;

@@ -1,18 +1,13 @@
 import { useReducer, useEffect } from 'react';
 import { rankingsReducer } from './reducers';
 import { ACTIONS } from './actions';
-import type { State, Data } from '@types';
 
-export function useAsync(
-  asyncCallback: () => void,
-  initialState: State,
-  cache: Map<string, Data>,
-) {
+export function useAsync(asyncCallback, initialState, cache) {
   const [state, dispatch] = useReducer(rankingsReducer, initialState);
-  const cacheKey = state.sport;
+  const cacheKey = state[cache.dataKey];
 
   useEffect(() => {
-    const data = cache.get(cacheKey);
+    const data = cache?.get(cacheKey);
 
     if (data) {
       dispatch({ type: ACTIONS.CACHE_FETCH_SUCCESS, payload: { data } });
@@ -30,9 +25,9 @@ export function useAsync(
   return [state, dispatch];
 }
 
-export function useUpdateCache(cache: Map<string, Data>, data: Data) {
+export function useUpdateCache(cache, data) {
   useEffect(() => {
-    const cacheKey = data?.sport
+    const cacheKey = data?.[cache.dataKey];
 
     if (cacheKey) {
       cache.set(cacheKey, data);

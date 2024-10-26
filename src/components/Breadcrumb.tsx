@@ -1,21 +1,21 @@
-import { Fragment, ReactNode  } from 'react';
+import { Fragment, ReactNode } from 'react';
 import Divider from '@mui/material/Divider';
 
-type BreadcrumbProps = {
-  children: Array<ReactNode>;
+type Props = {
+  children: ReactNode;
 };
 
-export default function Breadcrumb(props: BreadcrumbProps) {
-  const { children } = props;
-
+export default function Breadcrumb({ children }: Props) {
   const divider = <Divider orientation="vertical" variant="middle" flexItem />;
 
-  return children ? (
-    children.filter(Boolean).map((crumb, index) => (
+  if (children instanceof Array) {
+    return children.filter(Boolean).map((crumb: ReactNode, index: number) => (
       <Fragment key={index}>
-        { Boolean(index) && divider }
-        { crumb }
+        {Boolean(index) && divider}
+        {crumb}
       </Fragment>
-    ))
-  ) : null;
+    ));
+  }
+
+  return null;
 }
