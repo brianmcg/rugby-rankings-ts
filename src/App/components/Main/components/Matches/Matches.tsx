@@ -16,8 +16,8 @@ import mruImageSrc from '@assets/images/mru/matches.png';
 import wruImageSrc from '@assets/images/wru/matches.png';
 
 const IMAGES = {
-  [SPORTS.VALUES.MENS]: mruImageSrc,
-  [SPORTS.VALUES.WOMENS]: wruImageSrc,
+  [SPORTS.MENS]: mruImageSrc,
+  [SPORTS.WOMENS]: wruImageSrc,
 };
 
 type Props = {

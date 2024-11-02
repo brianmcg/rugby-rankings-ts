@@ -21,14 +21,22 @@ const initialState = {
   isError: false,
   isLoading: true,
   selectedMatch: null,
-  sport: SPORTS.VALUES.MENS as Sport,
+  sport: SPORTS.MENS as Sport,
 };
 
 export default function App() {
   const [state, dispatch] = useAsync(fetchData, initialState);
-
   const { data, initialData, selectedMatch, sport, isLoading, isError } = state;
-  const { label, startDate, endDate, teams, rankings, matches } = data ?? {};
+  const {
+    label = '',
+    startDate = new Date(),
+    endDate = new Date(),
+    teams = [],
+    rankings = [],
+    matches = [],
+  } = data ?? {};
+
+  const fetchedMatches = (initialData ?? {})[sport]?.matches ?? [];
 
   const changeSport = (sport: Sport) =>
     dispatch({
@@ -76,7 +84,7 @@ export default function App() {
             startDate={startDate}
             disabled={isLoading || isError}
             onSelectMatch={() => selectMatch(null)}
-            onResetMatches={() => updateMatches(initialData[sport]?.matches)}
+            onResetMatches={() => updateMatches(fetchedMatches)}
             onClearMatches={() => updateMatches([])}
           />
           <Main

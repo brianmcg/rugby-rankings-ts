@@ -11,13 +11,11 @@ import type { Sport } from '@constants/types';
 type Props = {
   sport: Sport;
   disabled: boolean;
-  changeSport: (value: string) => void;
+  changeSport: (value: Sport) => void;
 };
 
-const options = Object.values(SPORTS.VALUES);
-
 export default function Tabs({ sport, disabled, changeSport }: Props) {
-  const onChange = (_e: SyntheticEvent<Element, Event>, value: string) => {
+  const onChange = (_e: SyntheticEvent<Element, Event>, value: Sport) => {
     changeSport(value);
   };
 
@@ -31,7 +29,7 @@ export default function Tabs({ sport, disabled, changeSport }: Props) {
           textColor="primary"
           indicatorColor="primary"
         >
-          {options.map(value => (
+          {Object.values(SPORTS).map(value => (
             <Tab
               key={value}
               value={value}

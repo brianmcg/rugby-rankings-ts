@@ -25,8 +25,8 @@ import wruImageSrc from '@assets/images/wru/rankings.png';
 const INITIAL_ROWS = 16;
 
 const IMAGES = {
-  [SPORTS.VALUES.MENS]: mruImageSrc,
-  [SPORTS.VALUES.WOMENS]: wruImageSrc,
+  [SPORTS.MENS]: mruImageSrc,
+  [SPORTS.WOMENS]: wruImageSrc,
 };
 
 type Props = {

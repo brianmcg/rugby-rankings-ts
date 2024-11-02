@@ -3,10 +3,7 @@ export const MATCH_STATUSES = {
   UPCOMING: 'U',
 };
 
-export const SPORTS = {
-  KEY: 'sport',
-  VALUES: { MENS: 'mru', WOMENS: 'wru' },
-};
+export const SPORTS = { MENS: 'mru', WOMENS: 'wru' };
 
 export const COUNTRIES = {
   NORTHERN_IRELAND: 'Northern Ireland',

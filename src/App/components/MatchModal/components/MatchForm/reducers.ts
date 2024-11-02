@@ -32,11 +32,11 @@ function isMatchComplete({
   );
 }
 
-export function matchReducer(state: ParsedMatch, action: Action) {
+export function matchReducer(match: ParsedMatch, action: Action) {
   switch (action.type) {
     case ACTIONS.CHANGE_HOME_TEAM: {
       const { team: homeTeam } = action.payload as TeamPayload;
-      const { awayTeam, homeScore, awayScore } = state;
+      const { awayTeam, homeScore, awayScore } = match;
       const isComplete = isMatchComplete({
         homeTeam,
         awayTeam,
@@ -44,11 +44,11 @@ export function matchReducer(state: ParsedMatch, action: Action) {
         awayScore,
       });
 
-      return { ...state, homeTeam, isComplete };
+      return { ...match, homeTeam, isComplete };
     }
     case ACTIONS.CHANGE_AWAY_TEAM: {
       const { team: awayTeam } = action.payload as TeamPayload;
-      const { homeTeam, homeScore, awayScore } = state;
+      const { homeTeam, homeScore, awayScore } = match;
       const isComplete = isMatchComplete({
         homeTeam,
         awayTeam,
@@ -56,10 +56,10 @@ export function matchReducer(state: ParsedMatch, action: Action) {
         awayScore,
       });
 
-      return { ...state, awayTeam, isComplete };
+      return { ...match, awayTeam, isComplete };
     }
     case ACTIONS.CHANGE_HOME_SCORE: {
-      const { homeTeam, awayTeam, awayScore } = state;
+      const { homeTeam, awayTeam, awayScore } = match;
       const { score: homeScore } = action.payload as ScorePayload;
       const isComplete = isMatchComplete({
         homeTeam,
@@ -68,10 +68,10 @@ export function matchReducer(state: ParsedMatch, action: Action) {
         awayScore,
       });
 
-      return { ...state, homeScore, isComplete };
+      return { ...match, homeScore, isComplete };
     }
     case ACTIONS.CHANGE_AWAY_SCORE: {
-      const { homeTeam, awayTeam, homeScore } = state;
+      const { homeTeam, awayTeam, homeScore } = match;
       const { score: awayScore } = action.payload as ScorePayload;
       const isComplete = isMatchComplete({
         homeTeam,
@@ -80,22 +80,22 @@ export function matchReducer(state: ParsedMatch, action: Action) {
         awayScore,
       });
 
-      return { ...state, awayScore, isComplete };
+      return { ...match, awayScore, isComplete };
     }
     case ACTIONS.CHANGE_IS_NEUTRAL_VENUE: {
       const { isSelected: isNeutralVenue } = action.payload as SelectedPayload;
-      const isComplete = isMatchComplete(state);
+      const isComplete = isMatchComplete(match);
 
-      return { ...state, isNeutralVenue, isComplete };
+      return { ...match, isNeutralVenue, isComplete };
     }
     case ACTIONS.CHANGE_IS_WORLD_CUP: {
       const { isSelected: isWorldCup } = action.payload as SelectedPayload;
-      const isComplete = isMatchComplete(state);
+      const isComplete = isMatchComplete(match);
 
-      return { ...state, isWorldCup, isComplete };
+      return { ...match, isWorldCup, isComplete };
     }
     default: {
-      return state;
+      return match;
     }
   }
 }

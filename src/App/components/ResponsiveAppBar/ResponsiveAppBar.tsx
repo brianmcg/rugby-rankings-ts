@@ -13,7 +13,7 @@ import NavMenu from './components/NavMenu';
 import DropdownNavMenu from './components/DropdownNavMenu';
 
 type Props = {
-  startDate: Date | null | undefined;
+  startDate: Date | null;
   disabled: boolean;
   onSelectMatch: () => void;
   onResetMatches: () => void;

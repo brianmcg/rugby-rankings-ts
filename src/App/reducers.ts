@@ -123,7 +123,7 @@ function onUpdateMatch(state: State, payload: MatchPayload): State {
 
   if (data && initialData && sport) {
     const matches = data.matches.map(match => {
-      if (match.matchId === payload.match.matchId) {
+      if (match.matchId === payload.match?.matchId) {
         return { ...payload.match };
       }
 
