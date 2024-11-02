@@ -12,17 +12,17 @@ type Event = {
   id: string;
   altId: string;
   label: string;
-  sport: string;
+  sport: Sport;
   start: Time;
   end: Time;
-  abbr: null;
-  winningTeam: null;
+  abbr: string | null;
+  winningTeam: string | null;
   eventStatus: EventStatus;
-  seriesId: null;
-  seriesAltId: null;
+  seriesId: string | null;
+  seriesAltId: string | null;
   rankingsWeight: number;
-  impactPlayers: null;
-  teamPerformances: null;
+  impactPlayers: string | null;
+  teamPerformances: string | null;
 };
 
 type EventStatus = {
@@ -39,8 +39,8 @@ export type Naming = {
 
 type Time = {
   millis: number;
-  gmtOffset: number;
-  label: Date;
+  gmtOffset?: number;
+  label?: Date;
 };
 
 type PageInfo = {
@@ -54,20 +54,20 @@ export type Team = {
   id: string;
   altId: string;
   abbreviation?: string;
-  annotations?: null;
+  annotations?: string | null;
   country?: string;
   countryCode?: string;
   name?: string;
   naming?: Array<Naming>;
-  sport?: null;
+  sport?: Sport;
   type?: string;
 };
 
 export type Venue = {
-  id: string;
-  altId: string;
-  name: string;
-  city: string;
+  id?: string;
+  altId?: string;
+  name?: string;
+  city?: string;
   country: string;
 };
 
@@ -88,23 +88,23 @@ export type Rankings = {
 export type Match = {
   matchId: string;
   matchAltId: string;
-  description: null;
-  eventPhase: null | string;
+  description: string | null;
+  eventPhase: string | null;
   eventPhaseId: EventPhaseID | null;
   venue: Venue | null;
   time: Time;
-  attendance: null;
+  attendance: string | null;
   teams: Array<Team>;
   scores: Array<number>;
-  kc: null;
+  kc: string | null;
   status: string;
   clock: Clock;
   outcome: string;
   events: Array<Event>;
-  sport: string;
+  sport: Sport;
   competition: string;
-  weather: null;
-  rankingsWeight: null;
+  weather: string | null;
+  rankingsWeight: string | null;
 };
 
 export type Matches = {
@@ -113,25 +113,52 @@ export type Matches = {
 };
 
 export type ParsedMatch = {
-  matchId: string;
-  homeTeam: Team;
-  awayTeam: Team;
+  matchId: string | null;
+  homeTeam: Team | null;
+  awayTeam: Team | null;
   homeScore: number | null;
   awayScore: number | null;
   venue: Venue | null;
-  time: Time;
-  competition: string;
+  time: Time | null;
+  competition: string | null;
   isNeutralVenue: boolean;
   isWorldCup: boolean;
   isComplete: boolean;
+  isCreated?: boolean;
+  isUpdated?: boolean;
 };
 
 export type Data = {
-  sport: string;
+  sport: Sport;
   label: string;
   teams: Array<Team>;
   rankings: Array<Entry>;
   matches: Array<ParsedMatch>;
   startDate: Date;
   endDate: Date;
+};
+
+export type Sport = 'mru' | 'wru';
+
+type InitialData = {
+  mru?: Data;
+  wru?: Data;
+};
+
+export type InitialState = {
+  data: null;
+  initialData: null;
+  isError: boolean;
+  isLoading: boolean;
+  selectedMatch: null;
+  sport: Sport;
+};
+
+export type State = {
+  data: Data | null;
+  initialData: InitialData | null;
+  isError: boolean;
+  isLoading: boolean;
+  selectedMatch: ParsedMatch | null;
+  sport: Sport;
 };

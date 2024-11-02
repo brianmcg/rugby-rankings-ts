@@ -9,7 +9,7 @@ type Props = {
 
 function Translate({ text, options = {} }: Props) {
   const { t } = useTranslation();
-  return <>{t(text, options)}</>;
+  return t(text, options);
 }
 
 export default Translate;

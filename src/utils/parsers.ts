@@ -5,10 +5,10 @@ import type { Venue, Team, Match, ParsedMatch } from '@constants/types';
 
 // The Irish team represents both Ireland and Northern Ireland, so if the venue country
 // is Northern Ireland we still want it to count as home advantage.
-const getVenueCountry = (venue: Venue | null): string | undefined =>
+const getVenueCountry = (venue: Venue | null): string =>
   venue?.country === COUNTRIES.NORTHERN_IRELAND
     ? COUNTRIES.IRELAND
-    : venue?.country;
+    : (venue?.country ?? '');
 
 // Ukraine don't play home games in Ukraine, but home advantage still applies.
 const respectHomeAdvantage = (teams: Array<Team>): boolean =>

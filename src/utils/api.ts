@@ -10,6 +10,7 @@ import type {
   Matches,
   Match,
   Data,
+  Sport,
 } from '@constants/types';
 
 const DELAY_API_REQUESTS = false;
@@ -97,11 +98,8 @@ const fetchMatches = async (
   );
 };
 
-export const fetchData = async (
-  sport: string,
-  date: Date = TODAY,
-): Promise<Data> => {
-  const startDate = getPreviousMonday(date);
+export const fetchData = async (sport: Sport, date?: Date): Promise<Data> => {
+  const startDate = getPreviousMonday(date ?? TODAY);
   const { entries: rankings, label } = await fetchRankings(sport, startDate);
   const endDate = addDays(startDate, 6);
   const matches = await fetchMatches(sport, startDate, endDate, rankings);

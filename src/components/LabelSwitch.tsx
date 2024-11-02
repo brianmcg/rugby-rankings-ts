@@ -1,13 +1,14 @@
+import { ReactNode, SyntheticEvent } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 
 type Props = {
-  label: string;
+  label: ReactNode;
   checked: boolean;
-  disabled: boolean;
-  onChange: () => void;
+  disabled?: boolean;
+  onChange: (e: SyntheticEvent, isSelected: boolean) => void;
 };
 
 export default function LabelSwitch({
