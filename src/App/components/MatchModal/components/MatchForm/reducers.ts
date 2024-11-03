@@ -32,7 +32,7 @@ function isMatchComplete({
   );
 }
 
-export function matchReducer(match: ParsedMatch, action: Action) {
+export function matchReducer(match: ParsedMatch, action: Action): ParsedMatch {
   switch (action.type) {
     case ACTIONS.CHANGE_HOME_TEAM: {
       const { team: homeTeam } = action.payload as TeamPayload;

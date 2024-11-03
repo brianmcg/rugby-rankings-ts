@@ -49,7 +49,12 @@ export default function App() {
       type: ACTIONS.CREATE_MATCH,
     });
 
-  const selectMatch = (match: ParsedMatch | null) =>
+  const unselectMatch = () =>
+    dispatch({
+      type: ACTIONS.UNSELECT_MATCH,
+    });
+
+  const selectMatch = (match: ParsedMatch) =>
     dispatch({
       type: ACTIONS.SELECT_MATCH,
       payload: { match },
@@ -111,7 +116,7 @@ export default function App() {
           match={selectedMatch!}
           teams={teams}
           endDate={endDate}
-          selectMatch={selectMatch}
+          unselectMatch={unselectMatch}
           addMatch={addMatch}
           updateMatch={updateMatch}
         />

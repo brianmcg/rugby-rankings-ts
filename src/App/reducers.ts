@@ -2,7 +2,7 @@ import { ACTIONS } from './actions';
 import { calculateRankingChange } from './helpers';
 import type { State, ParsedMatch, Sport, Data } from '@constants/types';
 
-type MatchPayload = { match: ParsedMatch | null };
+type MatchPayload = { match: ParsedMatch };
 
 type MatchIdPayload = { matchId: string };
 
@@ -84,15 +84,15 @@ function onChangeSport(state: State, payload: SportPayload): State {
 }
 
 function onSelectMatch(state: State, payload: MatchPayload): State {
-  if (payload.match === null) {
-    return { ...state, selectedMatch: null };
-  }
-
   return { ...state, selectedMatch: payload.match };
 }
 
 function onCreateMatch(state: State): State {
   return { ...state, selectedMatch: newMatch };
+}
+
+function onUnselectMatch(state: State): State {
+  return { ...state, selectedMatch: null };
 }
 
 function onAddMatch(state: State, payload: MatchPayload): State {
@@ -222,6 +222,9 @@ export function rankingsReducer(
     }
     case ACTIONS.CREATE_MATCH: {
       return onCreateMatch(state);
+    }
+    case ACTIONS.UNSELECT_MATCH: {
+      return onUnselectMatch(state);
     }
     case ACTIONS.UPDATE_MATCHES: {
       return onUpdateMatches(state, payload as MatchesPayload);

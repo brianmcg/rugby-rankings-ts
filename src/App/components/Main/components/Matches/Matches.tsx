@@ -25,7 +25,7 @@ type Props = {
   sport: Sport;
   startDate: Date;
   endDate: Date;
-  selectMatch: (match: ParsedMatch | null) => void;
+  selectMatch: (match: ParsedMatch) => void;
   removeMatch: (matchId: string) => void;
 };
 

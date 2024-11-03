@@ -24,7 +24,7 @@ type Props = {
   match: ParsedMatch;
   teams: Array<Team>;
   endDate: Date;
-  selectMatch: (match: ParsedMatch | null) => void;
+  unselectMatch: () => void;
   addMatch: (match: ParsedMatch) => void;
   updateMatch: (match: ParsedMatch) => void;
 };
@@ -33,13 +33,13 @@ export default function MatchModal({
   match,
   teams,
   endDate,
-  selectMatch,
+  unselectMatch,
   addMatch,
   updateMatch,
 }: Props) {
   const isOpen = Boolean(match);
 
-  const onClose = () => selectMatch(null);
+  const onClose = () => unselectMatch();
 
   return (
     <Modal

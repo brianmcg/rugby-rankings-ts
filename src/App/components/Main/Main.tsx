@@ -16,7 +16,7 @@ type Props = {
   endDate: Date;
   isError: boolean;
   isLoading: boolean;
-  selectMatch: (match: ParsedMatch | null) => void;
+  selectMatch: (match: ParsedMatch) => void;
   removeMatch: (matchId: string) => void;
 };
 
