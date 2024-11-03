@@ -142,14 +142,14 @@ type Data = {
   endDate: Date;
 };
 
-type InitialData = {
+type FetchedData = {
   [SportEnum.MENS]: Data | null;
   [SportEnum.WOMENS]: Data | null;
 };
 
 type State = {
-  data: Data;
-  fetchedData: InitialData;
+  data: Data | null;
+  fetchedData: FetchedData;
   isError: boolean;
   isLoading: boolean;
   selectedMatch: AppMatch | null;

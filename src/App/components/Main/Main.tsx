@@ -9,11 +9,11 @@ import type { AppMatch, Entry, Team, Sport } from '@constants/types';
 type Props = {
   matches: Array<AppMatch>;
   rankings: Array<Entry>;
-  label: string;
+  label?: string;
   teams: Array<Team>;
   sport: Sport;
-  startDate: Date;
-  endDate: Date;
+  startDate?: Date;
+  endDate?: Date;
   isError: boolean;
   isLoading: boolean;
   selectMatch: (match: AppMatch) => void;
@@ -43,14 +43,14 @@ export default function Main({
           <Matches
             matches={matches}
             sport={sport}
-            startDate={startDate}
-            endDate={endDate}
+            startDate={startDate!}
+            endDate={endDate!}
             selectMatch={selectMatch}
             removeMatch={removeMatch}
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Rankings label={label} rankings={rankings} sport={sport} />
+          <Rankings label={label!} rankings={rankings} sport={sport} />
         </Grid>
       </Grid>
     </Container>

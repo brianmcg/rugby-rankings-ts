@@ -18,7 +18,14 @@ export default function App() {
 
   const { data, fetchedData, selectedMatch, sport, isLoading, isError } = state;
 
-  const { label, startDate, endDate, teams, rankings, matches } = data;
+  const {
+    label,
+    startDate,
+    endDate,
+    teams = [],
+    rankings = [],
+    matches = [],
+  } = data ?? {};
 
   const changeSport = (newSport: Sport) =>
     dispatch({
@@ -99,7 +106,7 @@ export default function App() {
         <MatchModal
           match={selectedMatch!}
           teams={teams}
-          endDate={endDate}
+          endDate={endDate!}
           unselectMatch={unselectMatch}
           addMatch={addMatch}
           updateMatch={updateMatch}

@@ -9,15 +9,7 @@ import type { Action } from './types';
 const cache = new Map<Sport, Data>();
 
 const initialState = {
-  data: {
-    label: '',
-    startDate: new Date(),
-    endDate: new Date(),
-    teams: [],
-    rankings: [],
-    matches: [],
-    sport: SportEnum.MENS,
-  },
+  data: null,
   fetchedData: {
     [SportEnum.MENS]: null,
     [SportEnum.WOMENS]: null,
