@@ -1,14 +1,15 @@
-import type { Sport } from '@constants/types';
+export enum MATCH_STATUSES {
+  COMPLETE = 'C',
+  UPCOMING = 'U',
+}
 
-export const MATCH_STATUSES = {
-  COMPLETE: 'C',
-  UPCOMING: 'U',
-};
+export enum SPORTS {
+  MENS = 'mru',
+  WOMENS = 'wru',
+}
 
-export const SPORTS = { MENS: 'mru' as Sport, WOMENS: 'wru' as Sport };
-
-export const COUNTRIES = {
-  NORTHERN_IRELAND: 'Northern Ireland',
-  IRELAND: 'Ireland',
-  UKRAINE: 'Ukraine',
-};
+export enum COUNTRIES {
+  NORTHERN_IRELAND = 'Northern Ireland',
+  IRELAND = 'Ireland',
+  UKRAINE = 'Ukraine',
+}

@@ -1,4 +1,6 @@
-type Sport = 'mru' | 'wru';
+import { SPORTS } from './data';
+
+type Sport = SPORTS;
 
 type Clock = {
   secs: number;
