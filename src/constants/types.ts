@@ -1,3 +1,5 @@
+type Sport = 'mru' | 'wru';
+
 type Clock = {
   secs: number;
   label: string;
@@ -30,17 +32,17 @@ type EventStatus = {
   eventStatusName: string;
 };
 
-export type Naming = {
-  from: Time | null;
-  until: Time | null;
-  name: string;
-  abbr: string;
-};
-
 type Time = {
   millis: number;
   gmtOffset?: number;
   label?: Date;
+};
+
+type Naming = {
+  from: Time | null;
+  until: Time | null;
+  name: string;
+  abbr: string;
 };
 
 type PageInfo = {
@@ -50,7 +52,7 @@ type PageInfo = {
   numEntries: number;
 };
 
-export type Team = {
+type Team = {
   id: string;
   altId: string;
   abbreviation?: string;
@@ -59,11 +61,11 @@ export type Team = {
   countryCode?: string;
   name?: string;
   naming?: Array<Naming>;
-  sport?: Sport;
+  sport?: Sport | null;
   type?: string;
 };
 
-export type Venue = {
+type Venue = {
   id?: string;
   altId?: string;
   name?: string;
@@ -71,7 +73,7 @@ export type Venue = {
   country: string;
 };
 
-export type Entry = {
+type Entry = {
   team: Team;
   pts: number;
   pos: number;
@@ -79,13 +81,13 @@ export type Entry = {
   previousPos: number;
 };
 
-export type Rankings = {
+type Rankings = {
   label: string;
   entries: Array<Entry>;
   effective: Time;
 };
 
-export type Match = {
+type Match = {
   matchId: string;
   matchAltId: string;
   description: string | null;
@@ -104,15 +106,15 @@ export type Match = {
   sport: Sport;
   competition: string;
   weather: string | null;
-  rankingsWeight: string | null;
+  rankingsWeight: number | null;
 };
 
-export type Matches = {
+type Matches = {
   pageInfo: PageInfo;
   content: Array<Match>;
 };
 
-export type ParsedMatch = {
+type ParsedMatch = {
   matchId: string | null;
   homeTeam: Team | null;
   awayTeam: Team | null;
@@ -128,7 +130,7 @@ export type ParsedMatch = {
   isUpdated?: boolean;
 };
 
-export type Data = {
+type Data = {
   sport: Sport;
   label: string;
   teams: Array<Team>;
@@ -138,27 +140,29 @@ export type Data = {
   endDate: Date;
 };
 
-export type Sport = 'mru' | 'wru';
-
 type InitialData = {
   mru?: Data;
   wru?: Data;
 };
 
-export type InitialState = {
-  data: null;
-  initialData: null;
-  isError: boolean;
-  isLoading: boolean;
-  selectedMatch: null;
-  sport: Sport;
-};
-
-export type State = {
+type State = {
   data: Data | null;
   initialData: InitialData | null;
   isError: boolean;
   isLoading: boolean;
   selectedMatch: ParsedMatch | null;
   sport: Sport;
+};
+
+export type {
+  Data,
+  Entry,
+  Match,
+  Matches,
+  ParsedMatch,
+  Rankings,
+  Sport,
+  State,
+  Team,
+  Venue,
 };
