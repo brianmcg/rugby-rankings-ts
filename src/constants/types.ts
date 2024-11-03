@@ -1,4 +1,4 @@
-import { SPORTS } from './data';
+import { SPORTS } from './enums';
 
 type Sport = SPORTS;
 

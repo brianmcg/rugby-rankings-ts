@@ -1,5 +1,5 @@
 import { WORLD_CUP } from '@utils/regex';
-import { MatchStatus, Country } from '@constants/data';
+import { MatchStatus, Country } from '@constants/enums';
 
 import type { Venue, Team, Match, AppMatch } from '@constants/types';
 

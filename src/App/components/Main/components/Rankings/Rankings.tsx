@@ -15,7 +15,7 @@ import Translate from '@components/Translate';
 import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { SPORTS } from '@constants/data';
+import { SPORTS } from '@constants/enums';
 import Row from './components/Row';
 import type { Sport, Entry } from '@constants/types';
 

@@ -5,7 +5,7 @@ import { default as MuiTabs } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Translate from '@components/Translate';
-import { SPORTS } from '@constants/data';
+import { SPORTS } from '@constants/enums';
 import type { Sport } from '@constants/types';
 
 type Props = {

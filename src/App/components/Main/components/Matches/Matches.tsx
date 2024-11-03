@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { formatRange } from '@utils/date';
 import Translate from '@components/Translate';
-import { SPORTS } from '@constants/data';
+import { SPORTS } from '@constants/enums';
 import Match from './components/Match';
 import type { AppMatch, Sport } from '@constants/types';
 
