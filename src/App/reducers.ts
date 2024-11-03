@@ -88,7 +88,11 @@ function onSelectMatch(state: State, payload: MatchPayload): State {
     return { ...state, selectedMatch: null };
   }
 
-  return { ...state, selectedMatch: payload.match ? payload.match : newMatch };
+  return { ...state, selectedMatch: payload.match };
+}
+
+function onCreateMatch(state: State): State {
+  return { ...state, selectedMatch: newMatch };
 }
 
 function onAddMatch(state: State, payload: MatchPayload): State {
@@ -215,6 +219,9 @@ export function rankingsReducer(
     }
     case ACTIONS.SELECT_MATCH: {
       return onSelectMatch(state, payload as MatchPayload);
+    }
+    case ACTIONS.CREATE_MATCH: {
+      return onCreateMatch(state);
     }
     case ACTIONS.UPDATE_MATCHES: {
       return onUpdateMatches(state, payload as MatchesPayload);

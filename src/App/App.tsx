@@ -44,6 +44,11 @@ export default function App() {
       payload: { sport },
     });
 
+  const createMatch = () =>
+    dispatch({
+      type: ACTIONS.CREATE_MATCH,
+    });
+
   const selectMatch = (match: ParsedMatch | null) =>
     dispatch({
       type: ACTIONS.SELECT_MATCH,
@@ -83,7 +88,7 @@ export default function App() {
           <ResponsiveAppBar
             startDate={startDate}
             disabled={isLoading || isError}
-            onSelectMatch={() => selectMatch(null)}
+            onCreateMatch={createMatch}
             onResetMatches={() => updateMatches(fetchedMatches)}
             onClearMatches={() => updateMatches([])}
           />
@@ -103,7 +108,7 @@ export default function App() {
           <Footer />
         </Stack>
         <MatchModal
-          match={selectedMatch}
+          match={selectedMatch!}
           teams={teams}
           endDate={endDate}
           selectMatch={selectMatch}

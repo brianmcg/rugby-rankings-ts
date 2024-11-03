@@ -15,7 +15,7 @@ import DropdownNavMenu from './components/DropdownNavMenu';
 type Props = {
   startDate: Date | null;
   disabled: boolean;
-  onSelectMatch: () => void;
+  onCreateMatch: () => void;
   onResetMatches: () => void;
   onClearMatches: () => void;
 };
@@ -23,14 +23,14 @@ type Props = {
 export default function ResponsiveAppBar({
   startDate,
   disabled,
-  onSelectMatch,
+  onCreateMatch,
   onResetMatches,
   onClearMatches,
 }: Props) {
   const options = [
     { label: 'app.main.reset', icon: <RefreshIcon />, onClick: onResetMatches },
     { label: 'app.main.clear', icon: <DeleteIcon />, onClick: onClearMatches },
-    { label: 'app.main.add', icon: <AddIcon />, onClick: onSelectMatch },
+    { label: 'app.main.add', icon: <AddIcon />, onClick: onCreateMatch },
   ];
 
   const matchesSmallBreakpoint = useMediaQuery('(min-width:600px)');

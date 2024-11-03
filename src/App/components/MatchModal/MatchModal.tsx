@@ -21,7 +21,7 @@ const style = {
 };
 
 type Props = {
-  match: ParsedMatch | null;
+  match: ParsedMatch;
   teams: Array<Team>;
   endDate: Date;
   selectMatch: (match: ParsedMatch | null) => void;
