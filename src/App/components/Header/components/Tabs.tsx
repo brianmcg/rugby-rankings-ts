@@ -15,9 +15,8 @@ type Props = {
 };
 
 export default function Tabs({ sport, disabled, changeSport }: Props) {
-  const onChange = (_e: SyntheticEvent<Element, Event>, value: Sport) => {
+  const onChange = (_e: SyntheticEvent<Element, Event>, value: Sport) =>
     changeSport(value);
-  };
 
   return (
     <Box sx={{ width: '100%', bgcolor: 'common.white' }}>

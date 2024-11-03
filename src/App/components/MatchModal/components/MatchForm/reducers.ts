@@ -1,19 +1,14 @@
 import { ACTIONS } from './actions';
 import { validateScore, validateTeam } from '@utils/validate';
 import type { ParsedMatch, Team } from '@constants/types';
+import type {
+  Action,
+  TeamPayload,
+  ScorePayload,
+  SelectedPayload,
+} from './types';
 
-type TeamPayload = { team: Team | null };
-
-type ScorePayload = { score: number | null };
-
-type SelectedPayload = { isSelected: boolean };
-
-type Action = {
-  type: string;
-  payload: TeamPayload | ScorePayload | SelectedPayload;
-};
-
-function isMatchComplete({
+const isMatchComplete = ({
   homeTeam,
   awayTeam,
   homeScore,
@@ -23,16 +18,19 @@ function isMatchComplete({
   awayTeam: Team | null;
   homeScore: number | null;
   awayScore: number | null;
-}) {
+}) => {
   return (
     validateTeam(homeTeam) &&
     validateTeam(awayTeam) &&
     validateScore(homeScore) &&
     validateScore(awayScore)
   );
-}
+};
 
-export function matchReducer(match: ParsedMatch, action: Action): ParsedMatch {
+export const matchReducer = (
+  match: ParsedMatch,
+  action: Action,
+): ParsedMatch => {
   switch (action.type) {
     case ACTIONS.CHANGE_HOME_TEAM: {
       const { team: homeTeam } = action.payload as TeamPayload;
@@ -98,4 +96,4 @@ export function matchReducer(match: ParsedMatch, action: Action): ParsedMatch {
       return match;
     }
   }
-}
+};

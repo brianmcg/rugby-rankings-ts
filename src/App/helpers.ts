@@ -1,9 +1,9 @@
 import type { Entry, ParsedMatch } from '@constants/types';
 
-function calculatePointsChanges(
+const calculatePointsChanges = (
   rankings: Array<Entry>,
   match: ParsedMatch,
-): Array<Entry> {
+): Array<Entry> => {
   let ratingGap;
   let ratingChange;
 
@@ -109,12 +109,12 @@ function calculatePointsChanges(
 
     return entry;
   });
-}
+};
 
-export function calculateRankingChange(
+export const calculateRankingChange = (
   rankings: Array<Entry>,
   matches: Array<ParsedMatch> = [],
-): Array<Entry> {
+): Array<Entry> => {
   return matches
     .reduce((memo, match) => {
       if (match.isComplete) {
@@ -126,4 +126,4 @@ export function calculateRankingChange(
       return entryB.pts - entryA.pts;
     })
     .map((entry, i) => ({ ...entry, pos: i + 1 }));
-}
+};

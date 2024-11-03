@@ -1,28 +1,14 @@
 import { ACTIONS } from './actions';
 import { calculateRankingChange } from './helpers';
-import type { State, ParsedMatch, Sport, Data } from '@constants/types';
-
-type MatchPayload = { match: ParsedMatch };
-
-type MatchIdPayload = { matchId: string };
-
-type MatchesPayload = { matches: Array<ParsedMatch> };
-
-type SportPayload = { sport: Sport };
-
-type DataPayload = { data: Data };
-
-type Payload =
-  | DataPayload
-  | SportPayload
-  | MatchPayload
-  | MatchIdPayload
-  | MatchesPayload;
-
-export type Action = {
-  type: string;
-  payload?: Payload;
-};
+import type { State } from '@constants/types';
+import type {
+  Action,
+  DataPayload,
+  MatchesPayload,
+  MatchIdPayload,
+  MatchPayload,
+  SportPayload,
+} from './types';
 
 let matchIdCounter = 0;
 
@@ -40,15 +26,13 @@ const newMatch = {
   venue: null,
 };
 
-function onFetchStart(state: State): State {
-  return {
-    ...state,
-    isLoading: true,
-    isError: false,
-  };
-}
+const onFetchStart = (state: State): State => ({
+  ...state,
+  isLoading: true,
+  isError: false,
+});
 
-function onFetchSuccess(state: State, payload: DataPayload): State {
+const onFetchSuccess = (state: State, payload: DataPayload): State => {
   const { data } = payload;
   const { rankings, matches, sport } = data;
 
@@ -58,44 +42,41 @@ function onFetchSuccess(state: State, payload: DataPayload): State {
     initialData: { ...state.initialData, [sport]: data },
     isLoading: false,
   };
-}
+};
 
-function onCacheFetchSuccess(state: State, payload: DataPayload): State {
-  return {
-    ...state,
-    data: payload.data,
-    isLoading: false,
-  };
-}
+const onCacheFetchSuccess = (state: State, payload: DataPayload): State => ({
+  ...state,
+  data: payload.data,
+  isLoading: false,
+});
 
-function onFetchError(state: State): State {
-  return {
-    ...state,
-    isError: true,
-    isLoading: false,
-  };
-}
+const onFetchError = (state: State): State => ({
+  ...state,
+  isError: true,
+  isLoading: false,
+});
 
-function onChangeSport(state: State, payload: SportPayload): State {
-  return {
-    ...state,
-    sport: payload.sport,
-  };
-}
+const onChangeSport = (state: State, payload: SportPayload): State => ({
+  ...state,
+  sport: payload.sport,
+});
 
-function onSelectMatch(state: State, payload: MatchPayload): State {
-  return { ...state, selectedMatch: payload.match };
-}
+const onSelectMatch = (state: State, payload: MatchPayload): State => ({
+  ...state,
+  selectedMatch: payload.match,
+});
 
-function onCreateMatch(state: State): State {
-  return { ...state, selectedMatch: newMatch };
-}
+const onCreateMatch = (state: State): State => ({
+  ...state,
+  selectedMatch: newMatch,
+});
 
-function onUnselectMatch(state: State): State {
-  return { ...state, selectedMatch: null };
-}
+const onUnselectMatch = (state: State): State => ({
+  ...state,
+  selectedMatch: null,
+});
 
-function onAddMatch(state: State, payload: MatchPayload): State {
+const onAddMatch = (state: State, payload: MatchPayload): State => {
   const { data, initialData, sport } = state;
 
   if (data && initialData && sport) {
@@ -120,9 +101,9 @@ function onAddMatch(state: State, payload: MatchPayload): State {
   }
 
   return state;
-}
+};
 
-function onUpdateMatch(state: State, payload: MatchPayload): State {
+const onUpdateMatch = (state: State, payload: MatchPayload): State => {
   const { data, initialData, sport } = state;
 
   if (data && initialData && sport) {
@@ -150,9 +131,9 @@ function onUpdateMatch(state: State, payload: MatchPayload): State {
   }
 
   return state;
-}
+};
 
-function onRemoveMatch(state: State, payload: MatchIdPayload): State {
+const onRemoveMatch = (state: State, payload: MatchIdPayload): State => {
   const { data, initialData, sport } = state;
 
   if (data && initialData && sport) {
@@ -172,9 +153,9 @@ function onRemoveMatch(state: State, payload: MatchIdPayload): State {
   }
 
   return state;
-}
+};
 
-function onUpdateMatches(state: State, payload: MatchesPayload): State {
+const onUpdateMatches = (state: State, payload: MatchesPayload): State => {
   const { data, initialData, sport } = state;
   const { matches } = payload;
 
@@ -189,12 +170,12 @@ function onUpdateMatches(state: State, payload: MatchesPayload): State {
   }
 
   return state;
-}
+};
 
-export function rankingsReducer(
+export const rankingsReducer = (
   state: State,
   { type, payload }: Action,
-): State {
+): State => {
   switch (type) {
     case ACTIONS.FETCH_START: {
       return onFetchStart(state);
@@ -236,4 +217,4 @@ export function rankingsReducer(
       return state;
     }
   }
-}
+};

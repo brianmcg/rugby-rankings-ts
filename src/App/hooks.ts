@@ -2,14 +2,14 @@ import { useReducer, useEffect, Dispatch } from 'react';
 import { rankingsReducer } from './reducers';
 import { ACTIONS } from './actions';
 import { State, Data, Sport } from '@constants/types';
-import type { Action } from './reducers';
+import type { Action } from './types';
 
 const cache = new Map<Sport, Data>();
 
-export function useAsync(
+export const useAsync = (
   asyncCallback: (sport: Sport, date?: Date) => Promise<Data>,
   initialState: State,
-): [State, Dispatch<Action>] {
+): [State, Dispatch<Action>] => {
   const [state, dispatch] = useReducer(rankingsReducer, initialState);
   const { sport } = state;
 
@@ -37,4 +37,4 @@ export function useAsync(
   }, [asyncCallback, sport]);
 
   return [state, dispatch];
-}
+};

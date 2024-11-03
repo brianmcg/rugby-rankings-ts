@@ -1,14 +1,12 @@
 import { ReactNode } from 'react';
 import { Stack, IconButton } from '@mui/material';
 
-type Option = {
-  icon: ReactNode;
-  onClick: () => void;
-  color: string;
-};
-
 type Props = {
-  options: Array<Option>;
+  options: Array<{
+    icon: ReactNode;
+    onClick: () => void;
+    color: string;
+  }>;
 };
 
 export default function MatchButtons({ options }: Props) {

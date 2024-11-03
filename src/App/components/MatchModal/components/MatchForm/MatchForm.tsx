@@ -37,47 +37,41 @@ export default function MatchForm({
   } = state;
   const { t } = useTranslation();
 
-  const onHomeTeamChange = (_e: SyntheticEvent, team: Team | null) => {
+  const onHomeTeamChange = (_e: SyntheticEvent, team: Team | null) =>
     dispatch({
       type: ACTIONS.CHANGE_HOME_TEAM,
       payload: { team },
     });
-  };
 
-  const onAwayTeamChange = (_e: SyntheticEvent, team: Team | null) => {
+  const onAwayTeamChange = (_e: SyntheticEvent, team: Team | null) =>
     dispatch({
       type: ACTIONS.CHANGE_AWAY_TEAM,
       payload: { team },
     });
-  };
 
-  const onHomeScoreChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onHomeScoreChange = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch({
       type: ACTIONS.CHANGE_HOME_SCORE,
       payload: { score: parseInt(e.target.value, 10) },
     });
-  };
 
-  const onAwayScoreChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onAwayScoreChange = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch({
       type: ACTIONS.CHANGE_AWAY_SCORE,
       payload: { score: parseInt(e.target.value, 10) },
     });
-  };
 
-  const onNeutralVenueChange = (_e: SyntheticEvent, isSelected: boolean) => {
+  const onNeutralVenueChange = (_e: SyntheticEvent, isSelected: boolean) =>
     dispatch({
       type: ACTIONS.CHANGE_IS_NEUTRAL_VENUE,
       payload: { isSelected },
     });
-  };
 
-  const onWorldCupChange = (_e: SyntheticEvent, isSelected: boolean) => {
+  const onWorldCupChange = (_e: SyntheticEvent, isSelected: boolean) =>
     dispatch({
       type: ACTIONS.CHANGE_IS_WORLD_CUP,
       payload: { isSelected },
     });
-  };
 
   const onClickConfirm = (match: ParsedMatch) => {
     if (match.matchId) {

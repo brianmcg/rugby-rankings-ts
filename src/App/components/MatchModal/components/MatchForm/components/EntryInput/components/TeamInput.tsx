@@ -10,6 +10,7 @@ type Props = {
   value: Team | null;
   onChange: (event: SyntheticEvent, value: Team | null) => void;
 };
+
 export default function TeamInput({ options, value, label, onChange }: Props) {
   return (
     <Autocomplete

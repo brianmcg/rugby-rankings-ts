@@ -8,16 +8,14 @@ import { InputBaseComponentProps, TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { validateScore } from '@utils/validate';
 
-type NumbericFormatCustomProps = InputBaseComponentProps & NumericFormatProps;
-
-type ScoreInputProps = {
+type Props = {
   label: ReactNode;
   value: number | null;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 const NumericFormatCustom = forwardRef(function NumericFormatCustom(
-  { onChange, ...other }: NumbericFormatCustomProps,
+  { onChange, ...other }: InputBaseComponentProps & NumericFormatProps,
   ref,
 ) {
   const onValueChange: OnValueChange = ({ value }) => {
@@ -37,11 +35,7 @@ const NumericFormatCustom = forwardRef(function NumericFormatCustom(
   );
 });
 
-export default function ScoreInput({
-  onChange,
-  value,
-  label,
-}: ScoreInputProps) {
+export default function ScoreInput({ onChange, value, label }: Props) {
   return (
     <FormControl sx={{ width: '100%' }}>
       <TextField

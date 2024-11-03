@@ -1,4 +1,4 @@
-import { useTheme, Palette } from '@mui/material';
+import { useTheme } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -6,20 +6,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import MatchInfo from './components/MatchInfo';
 import MatchResult from './components/MatchResult';
 import MatchButtons from './components/MatchButtons';
+import { getColor } from './helpers';
 import type { ParsedMatch } from '@constants/types';
-
-function getColor(match: ParsedMatch, palette: Palette) {
-  const { isCreated, isUpdated, isComplete } = match;
-  const { success, primary, error } = palette;
-
-  if (isCreated || isUpdated) {
-    return success.main;
-  } else if (isComplete) {
-    return primary.main;
-  } else {
-    return error.main;
-  }
-}
 
 type Props = {
   match: ParsedMatch;

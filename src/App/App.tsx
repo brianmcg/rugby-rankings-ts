@@ -21,7 +21,7 @@ const initialState = {
   isError: false,
   isLoading: true,
   selectedMatch: null,
-  sport: SPORTS.MENS as Sport,
+  sport: SPORTS.MENS,
 };
 
 export default function App() {
