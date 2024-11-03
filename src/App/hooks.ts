@@ -25,12 +25,12 @@ export const useFetchData = (): [State, Dispatch<Action>] => {
   const { sport, data } = state;
 
   useEffect(() => {
-    const cached = cache.get(sport);
+    const cachedData = cache.get(sport);
 
-    if (cached) {
+    if (cachedData) {
       dispatch({
         type: ACTIONS.CACHE_FETCH_SUCCESS,
-        payload: { data: cached },
+        payload: { data: cachedData },
       });
 
       return;
@@ -45,10 +45,10 @@ export const useFetchData = (): [State, Dispatch<Action>] => {
   }, [sport]);
 
   useEffect(() => {
-    const key = data?.sport;
+    const cacheKey = data?.sport;
 
-    if (key) {
-      cache.set(key, data);
+    if (cacheKey) {
+      cache.set(cacheKey, data);
     }
   }, [data]);
 
