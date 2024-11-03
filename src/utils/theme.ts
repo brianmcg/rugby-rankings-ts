@@ -1,4 +1,4 @@
-import { createTheme  } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { blueGrey } from '@mui/material/colors';
 
 export const PRIMARY = '#00419b';
@@ -16,7 +16,7 @@ export const SUCCESS = '#58be46';
 export const ERROR = '#c30019';
 
 const transitionStyle = {
-  transitionBehavior :'normal',
+  transitionBehavior: 'normal',
   transitionDelay: '0s',
   transitionDuration: '0.2s',
   transitionProperty: 'all',
@@ -62,7 +62,6 @@ const theme = createTheme({
               backgroundColor: blueGrey[200],
             },
           },
-
         },
       },
     },
@@ -116,7 +115,7 @@ const theme = createTheme({
     },
     MuiTab: {
       styleOverrides: {
-        root:{
+        root: {
           textTransform: 'none',
           color: PRIMARY,
           // '&.Mui-selected': {
