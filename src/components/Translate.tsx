@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import type { TOptions } from 'i18next';
 
 type Props = {
   text: string;
-  options?: {
-    [key: string]: string;
-  };
+  options?: TOptions;
 };
 
 function Translate({ text, options = {} }: Props) {
