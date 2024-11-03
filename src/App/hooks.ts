@@ -1,7 +1,7 @@
 import { useReducer, useEffect, Dispatch } from 'react';
 import { State, Data, Sport } from '@constants/types';
 import { fetchData } from '@utils/api';
-import { SPORTS } from '@constants/enums';
+import { SportEnum } from '@constants/enums';
 import { rankingsReducer } from './reducers';
 import { ACTIONS } from './actions';
 import type { Action } from './types';
@@ -14,7 +14,7 @@ const initialState = {
   isError: false,
   isLoading: true,
   selectedMatch: null,
-  sport: SPORTS.MENS,
+  sport: SportEnum.MENS,
 };
 
 export const useFetchData = (): [State, Dispatch<Action>] => {

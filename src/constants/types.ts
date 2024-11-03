@@ -1,6 +1,6 @@
-import { SPORTS } from './enums';
+import { SportEnum } from './enums';
 
-type Sport = SPORTS;
+type Sport = SportEnum.MENS | SportEnum.WOMENS;
 
 type Clock = {
   secs: number;

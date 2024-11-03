@@ -15,7 +15,7 @@ import Translate from '@components/Translate';
 import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { SPORTS } from '@constants/enums';
+import { SportEnum } from '@constants/enums';
 import Row from './components/Row';
 import type { Sport, Entry } from '@constants/types';
 
@@ -25,8 +25,8 @@ import wruImageSrc from '@assets/images/wru/rankings.png';
 const INITIAL_ROWS = 16;
 
 const IMAGES = {
-  [SPORTS.MENS]: mruImageSrc,
-  [SPORTS.WOMENS]: wruImageSrc,
+  [SportEnum.MENS]: mruImageSrc,
+  [SportEnum.WOMENS]: wruImageSrc,
 };
 
 type Props = {

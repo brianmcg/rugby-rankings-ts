@@ -1,18 +1,18 @@
 import { WORLD_CUP } from '@utils/regex';
-import { MatchStatus, Country } from '@constants/enums';
+import { MatchStatusEnum, CountryEnum } from '@constants/enums';
 
 import type { Venue, Team, Match, AppMatch } from '@constants/types';
 
 // The Irish team represents both Ireland and Northern Ireland, so if the venue country
 // is Northern Ireland we still want it to count as home advantage.
-const getVenueCountry = (venue: Venue | null): string =>
-  venue?.country === Country.NORTHERN_IRELAND
-    ? Country.IRELAND
+const getVenueCountryEnum = (venue: Venue | null): string =>
+  venue?.country === CountryEnum.NORTHERN_IRELAND
+    ? CountryEnum.IRELAND
     : (venue?.country ?? '');
 
 // Ukraine don't play home games in Ukraine, but home advantage still applies.
 const respectHomeAdvantage = (teams: Array<Team>): boolean =>
-  teams.some(team => team.name === Country.UKRAINE);
+  teams.some(team => team.name === CountryEnum.UKRAINE);
 
 const isRWC = (competition: string): boolean => WORLD_CUP.test(competition);
 
@@ -25,11 +25,11 @@ const parseMatch = ({
   time,
   competition,
 }: Match): AppMatch => {
-  const venueCountry = getVenueCountry(venue);
+  const venueCountryEnum = getVenueCountryEnum(venue);
   const indexOfVenueTeam = respectHomeAdvantage(teams)
     ? 0
     : venue
-      ? teams.map(t => t.country).indexOf(venueCountry)
+      ? teams.map(t => t.country).indexOf(venueCountryEnum)
       : 0;
 
   const isNeutralVenue = indexOfVenueTeam < 0;
@@ -38,7 +38,7 @@ const parseMatch = ({
 
   const homeTeam = teams[homeIndex];
   const awayTeam = teams[awayIndex];
-  const isComplete = status === (MatchStatus.COMPLETE as string);
+  const isComplete = status === (MatchStatusEnum.COMPLETE as string);
   const homeScore = isComplete ? scores[homeIndex] : null;
   const awayScore = isComplete ? scores[awayIndex] : null;
   const isWorldCup = isRWC(competition);
