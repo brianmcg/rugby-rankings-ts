@@ -16,21 +16,14 @@ import type { Sport, AppMatch } from '@constants/types';
 export default function App() {
   const [state, dispatch] = useFetchData();
 
-  const { data, initialData, selectedMatch, sport, isLoading, isError } = state;
+  const { data, fetchedData, selectedMatch, sport, isLoading, isError } = state;
 
-  const {
-    label = '',
-    startDate = new Date(),
-    endDate = new Date(),
-    teams = [],
-    rankings = [],
-    matches = [],
-  } = data ?? {};
+  const { label, startDate, endDate, teams, rankings, matches } = data;
 
-  const changeSport = (sport: Sport) =>
+  const changeSport = (newSport: Sport) =>
     dispatch({
       type: ACTIONS.CHANGE_SPORT,
-      payload: { sport },
+      payload: { sport: newSport },
     });
 
   const createMatch = () =>
@@ -84,7 +77,7 @@ export default function App() {
             disabled={isLoading || isError}
             onCreateMatch={createMatch}
             onResetMatches={() =>
-              updateMatches((initialData ?? {})[sport]?.matches ?? [])
+              updateMatches(fetchedData[sport]?.matches ?? [])
             }
             onClearMatches={() => updateMatches([])}
           />

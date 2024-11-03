@@ -143,13 +143,13 @@ type Data = {
 };
 
 type InitialData = {
-  mru?: Data;
-  wru?: Data;
+  [SportEnum.MENS]: Data | null;
+  [SportEnum.WOMENS]: Data | null;
 };
 
 type State = {
-  data: Data | null;
-  initialData: InitialData | null;
+  data: Data;
+  fetchedData: InitialData;
   isError: boolean;
   isLoading: boolean;
   selectedMatch: AppMatch | null;

@@ -39,7 +39,7 @@ const onFetchSuccess = (state: State, payload: DataPayload): State => {
   return {
     ...state,
     data: { ...data, rankings: calculateRankingChange(rankings, matches) },
-    initialData: { ...state.initialData, [sport]: data },
+    fetchedData: { ...state.fetchedData, [sport]: data },
     isLoading: false,
   };
 };
@@ -77,15 +77,15 @@ const onUnselectMatch = (state: State): State => ({
 });
 
 const onAddMatch = (state: State, payload: MatchPayload): State => {
-  const { data, initialData, sport } = state;
+  const { data, fetchedData, sport } = state;
 
-  if (data && initialData && sport) {
+  if (data && fetchedData && sport) {
     const matches = [
       ...data.matches,
       { ...payload.match, matchId: `new-${matchIdCounter++}` },
     ];
 
-    const { rankings: initialRankings } = initialData[sport] ?? {};
+    const { rankings: initialRankings } = fetchedData[sport] ?? {};
 
     if (initialRankings) {
       const rankings = calculateRankingChange(initialRankings, matches);
@@ -104,9 +104,9 @@ const onAddMatch = (state: State, payload: MatchPayload): State => {
 };
 
 const onUpdateMatch = (state: State, payload: MatchPayload): State => {
-  const { data, initialData, sport } = state;
+  const { data, fetchedData, sport } = state;
 
-  if (data && initialData && sport) {
+  if (data && fetchedData && sport) {
     const matches = data.matches.map(match => {
       if (match.matchId === payload.match?.matchId) {
         return { ...payload.match };
@@ -115,7 +115,7 @@ const onUpdateMatch = (state: State, payload: MatchPayload): State => {
       return match;
     });
 
-    const { rankings: initialRankings } = initialData[sport] ?? {};
+    const { rankings: initialRankings } = fetchedData[sport] ?? {};
 
     if (initialRankings) {
       const rankings = calculateRankingChange(initialRankings, matches);
@@ -134,14 +134,14 @@ const onUpdateMatch = (state: State, payload: MatchPayload): State => {
 };
 
 const onRemoveMatch = (state: State, payload: MatchIdPayload): State => {
-  const { data, initialData, sport } = state;
+  const { data, fetchedData, sport } = state;
 
-  if (data && initialData && sport) {
+  if (data && fetchedData && sport) {
     const matches = data.matches.filter(
       match => match.matchId !== payload.matchId,
     );
 
-    const { rankings: initialRankings } = initialData[sport] ?? {};
+    const { rankings: initialRankings } = fetchedData[sport] ?? {};
 
     if (initialRankings) {
       const rankings = calculateRankingChange(initialRankings, matches);
@@ -156,11 +156,11 @@ const onRemoveMatch = (state: State, payload: MatchIdPayload): State => {
 };
 
 const onUpdateMatches = (state: State, payload: MatchesPayload): State => {
-  const { data, initialData, sport } = state;
+  const { data, fetchedData, sport } = state;
   const { matches } = payload;
 
-  if (data && initialData && sport) {
-    const { rankings: initialRankings } = initialData[sport] ?? {};
+  if (data && fetchedData && sport) {
+    const { rankings: initialRankings } = fetchedData[sport] ?? {};
 
     if (initialRankings) {
       const rankings = calculateRankingChange(initialRankings, matches);
