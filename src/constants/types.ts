@@ -114,7 +114,7 @@ type Matches = {
   content: Array<Match>;
 };
 
-type ParsedMatch = {
+type AppMatch = {
   matchId: string | null;
   homeTeam: Team | null;
   awayTeam: Team | null;
@@ -135,7 +135,7 @@ type Data = {
   label: string;
   teams: Array<Team>;
   rankings: Array<Entry>;
-  matches: Array<ParsedMatch>;
+  matches: Array<AppMatch>;
   startDate: Date;
   endDate: Date;
 };
@@ -150,7 +150,7 @@ type State = {
   initialData: InitialData | null;
   isError: boolean;
   isLoading: boolean;
-  selectedMatch: ParsedMatch | null;
+  selectedMatch: AppMatch | null;
   sport: Sport;
 };
 
@@ -159,7 +159,7 @@ export type {
   Entry,
   Match,
   Matches,
-  ParsedMatch,
+  AppMatch,
   Rankings,
   Sport,
   State,

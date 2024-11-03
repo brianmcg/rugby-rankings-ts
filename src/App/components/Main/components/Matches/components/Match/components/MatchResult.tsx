@@ -1,9 +1,9 @@
 import { Stack, Grid, Typography } from '@mui/material';
 import Translate from '@components/Translate';
-import type { ParsedMatch } from '@constants/types';
+import type { AppMatch } from '@constants/types';
 
 type Props = {
-  match: ParsedMatch;
+  match: AppMatch;
   color: string;
 };
 

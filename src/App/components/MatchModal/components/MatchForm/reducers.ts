@@ -1,6 +1,6 @@
 import { ACTIONS } from './actions';
 import { validateScore, validateTeam } from '@utils/validate';
-import type { ParsedMatch, Team } from '@constants/types';
+import type { AppMatch, Team } from '@constants/types';
 import type {
   Action,
   TeamPayload,
@@ -27,10 +27,7 @@ const isMatchComplete = ({
   );
 };
 
-export const matchReducer = (
-  match: ParsedMatch,
-  action: Action,
-): ParsedMatch => {
+export const matchReducer = (match: AppMatch, action: Action): AppMatch => {
   switch (action.type) {
     case ACTIONS.CHANGE_HOME_TEAM: {
       const { team: homeTeam } = action.payload as TeamPayload;

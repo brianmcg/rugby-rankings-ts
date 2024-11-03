@@ -1,10 +1,10 @@
 import Breadcrumb from '@components/Breadcrumb';
 import { formatDayMonth } from '@utils/date';
 import { Stack, Typography } from '@mui/material';
-import type { ParsedMatch } from '@constants/types';
+import type { AppMatch } from '@constants/types';
 
 type Props = {
-  match: ParsedMatch;
+  match: AppMatch;
 };
 
 export default function MatchInfo({ match }: Props) {

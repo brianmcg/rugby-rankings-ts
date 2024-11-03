@@ -4,10 +4,10 @@ import ErrorMessage from '@components/ErrorMessage';
 import Loading from '@components/Loading';
 import Rankings from './components/Rankings';
 import Matches from './components/Matches';
-import type { ParsedMatch, Entry, Team, Sport } from '@constants/types';
+import type { AppMatch, Entry, Team, Sport } from '@constants/types';
 
 type Props = {
-  matches: Array<ParsedMatch>;
+  matches: Array<AppMatch>;
   rankings: Array<Entry>;
   label: string;
   teams: Array<Team>;
@@ -16,7 +16,7 @@ type Props = {
   endDate: Date;
   isError: boolean;
   isLoading: boolean;
-  selectMatch: (match: ParsedMatch) => void;
+  selectMatch: (match: AppMatch) => void;
   removeMatch: (matchId: string) => void;
 };
 

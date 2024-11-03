@@ -7,11 +7,11 @@ import MatchInfo from './components/MatchInfo';
 import MatchResult from './components/MatchResult';
 import MatchButtons from './components/MatchButtons';
 import { getColor } from './helpers';
-import type { ParsedMatch } from '@constants/types';
+import type { AppMatch } from '@constants/types';
 
 type Props = {
-  match: ParsedMatch;
-  selectMatch: (match: ParsedMatch) => void;
+  match: AppMatch;
+  selectMatch: (match: AppMatch) => void;
   removeMatch: (matchId: string) => void;
 };
 

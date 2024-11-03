@@ -10,7 +10,7 @@ import { formatRange } from '@utils/date';
 import Translate from '@components/Translate';
 import { SPORTS } from '@constants/data';
 import Match from './components/Match';
-import type { ParsedMatch, Sport } from '@constants/types';
+import type { AppMatch, Sport } from '@constants/types';
 
 import mruImageSrc from '@assets/images/mru/matches.png';
 import wruImageSrc from '@assets/images/wru/matches.png';
@@ -21,11 +21,11 @@ const IMAGES = {
 };
 
 type Props = {
-  matches: Array<ParsedMatch>;
+  matches: Array<AppMatch>;
   sport: Sport;
   startDate: Date;
   endDate: Date;
-  selectMatch: (match: ParsedMatch) => void;
+  selectMatch: (match: AppMatch) => void;
   removeMatch: (matchId: string) => void;
 };
 

@@ -1,7 +1,7 @@
 import { WORLD_CUP } from '@utils/regex';
 import { MATCH_STATUSES, COUNTRIES } from '@constants/data';
 
-import type { Venue, Team, Match, ParsedMatch } from '@constants/types';
+import type { Venue, Team, Match, AppMatch } from '@constants/types';
 
 // The Irish team represents both Ireland and Northern Ireland, so if the venue country
 // is Northern Ireland we still want it to count as home advantage.
@@ -24,7 +24,7 @@ const parseMatch = ({
   venue,
   time,
   competition,
-}: Match): ParsedMatch => {
+}: Match): AppMatch => {
   const venueCountry = getVenueCountry(venue);
   const indexOfVenueTeam = respectHomeAdvantage(teams)
     ? 0
@@ -58,5 +58,5 @@ const parseMatch = ({
   };
 };
 
-export const parseMatches = (matches: Array<Match>): Array<ParsedMatch> =>
+export const parseMatches = (matches: Array<Match>): Array<AppMatch> =>
   matches.map(match => parseMatch(match));

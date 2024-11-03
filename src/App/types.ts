@@ -1,10 +1,10 @@
-import type { ParsedMatch, Sport, Data } from '@constants/types';
+import type { AppMatch, Sport, Data } from '@constants/types';
 
-type MatchPayload = { match: ParsedMatch };
+type MatchPayload = { match: AppMatch };
 
 type MatchIdPayload = { matchId: string };
 
-type MatchesPayload = { matches: Array<ParsedMatch> };
+type MatchesPayload = { matches: Array<AppMatch> };
 
 type SportPayload = { sport: Sport };
 

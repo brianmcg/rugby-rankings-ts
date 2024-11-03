@@ -13,7 +13,7 @@ import ResponsiveAppBar from './components/ResponsiveAppBar';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import MatchModal from './components/MatchModal';
-import type { Sport, ParsedMatch } from '@constants/types';
+import type { Sport, AppMatch } from '@constants/types';
 
 const initialState = {
   data: null,
@@ -54,19 +54,19 @@ export default function App() {
       type: ACTIONS.UNSELECT_MATCH,
     });
 
-  const selectMatch = (match: ParsedMatch) =>
+  const selectMatch = (match: AppMatch) =>
     dispatch({
       type: ACTIONS.SELECT_MATCH,
       payload: { match },
     });
 
-  const addMatch = (match: ParsedMatch) =>
+  const addMatch = (match: AppMatch) =>
     dispatch({
       type: ACTIONS.ADD_MATCH,
       payload: { match },
     });
 
-  const updateMatch = (match: ParsedMatch) =>
+  const updateMatch = (match: AppMatch) =>
     dispatch({
       type: ACTIONS.UPDATE_MATCH,
       payload: { match },
@@ -78,7 +78,7 @@ export default function App() {
       payload: { matchId },
     });
 
-  const updateMatches = (matches: Array<ParsedMatch>) =>
+  const updateMatches = (matches: Array<AppMatch>) =>
     dispatch({
       type: ACTIONS.UPDATE_MATCHES,
       payload: { matches },

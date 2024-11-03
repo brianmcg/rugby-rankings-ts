@@ -1,8 +1,8 @@
-import type { Entry, ParsedMatch } from '@constants/types';
+import type { Entry, AppMatch } from '@constants/types';
 
 const calculatePointsChanges = (
   rankings: Array<Entry>,
-  match: ParsedMatch,
+  match: AppMatch,
 ): Array<Entry> => {
   let ratingGap;
   let ratingChange;
@@ -113,7 +113,7 @@ const calculatePointsChanges = (
 
 export const calculateRankingChange = (
   rankings: Array<Entry>,
-  matches: Array<ParsedMatch> = [],
+  matches: Array<AppMatch> = [],
 ): Array<Entry> => {
   return matches
     .reduce((memo, match) => {

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Translate from '@components/Translate';
 import MatchForm from './components/MatchForm';
-import type { ParsedMatch, Team } from '@constants/types';
+import type { AppMatch, Team } from '@constants/types';
 
 const style = {
   position: 'absolute',
@@ -21,12 +21,12 @@ const style = {
 };
 
 type Props = {
-  match: ParsedMatch;
+  match: AppMatch;
   teams: Array<Team>;
   endDate: Date;
   unselectMatch: () => void;
-  addMatch: (match: ParsedMatch) => void;
-  updateMatch: (match: ParsedMatch) => void;
+  addMatch: (match: AppMatch) => void;
+  updateMatch: (match: AppMatch) => void;
 };
 
 export default function MatchModal({

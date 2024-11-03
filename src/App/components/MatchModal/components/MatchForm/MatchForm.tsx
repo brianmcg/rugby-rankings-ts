@@ -8,14 +8,14 @@ import { ACTIONS } from './actions';
 import { matchReducer } from './reducers';
 import EntryInput from './components/EntryInput';
 import { useTranslation } from 'react-i18next';
-import type { ParsedMatch, Team } from '@constants/types';
+import type { AppMatch, Team } from '@constants/types';
 
 type Props = {
-  match: ParsedMatch;
+  match: AppMatch;
   teams: Array<Team>;
   endDate: Date;
-  addMatch: (match: ParsedMatch) => void;
-  updateMatch: (match: ParsedMatch) => void;
+  addMatch: (match: AppMatch) => void;
+  updateMatch: (match: AppMatch) => void;
 };
 
 export default function MatchForm({
@@ -73,7 +73,7 @@ export default function MatchForm({
       payload: { isSelected },
     });
 
-  const onClickConfirm = (match: ParsedMatch) => {
+  const onClickConfirm = (match: AppMatch) => {
     if (match.matchId) {
       updateMatch({ ...match, isCreated: true });
     } else {
