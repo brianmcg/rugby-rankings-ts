@@ -1,17 +1,25 @@
 import { useReducer, useEffect, Dispatch } from 'react';
+import { State, Data, Sport } from '@constants/types';
+import { fetchData } from '@utils/api';
+import { SPORTS } from '@constants/data';
 import { rankingsReducer } from './reducers';
 import { ACTIONS } from './actions';
-import { State, Data, Sport } from '@constants/types';
 import type { Action } from './types';
 
 const cache = new Map<Sport, Data>();
 
-export const useAsync = (
-  asyncCallback: (sport: Sport, date?: Date) => Promise<Data>,
-  initialState: State,
-): [State, Dispatch<Action>] => {
+const initialState = {
+  data: null,
+  initialData: null,
+  isError: false,
+  isLoading: true,
+  selectedMatch: null,
+  sport: SPORTS.MENS,
+};
+
+export const useFetchData = (): [State, Dispatch<Action>] => {
   const [state, dispatch] = useReducer(rankingsReducer, initialState);
-  const { sport } = state;
+  const { sport, data } = state;
 
   useEffect(() => {
     const cached = cache.get(sport);
@@ -27,14 +35,19 @@ export const useAsync = (
 
     dispatch({ type: ACTIONS.FETCH_START });
 
-    asyncCallback(sport).then(
-      data => {
-        cache.set(sport, data);
-        dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: { data } });
-      },
+    fetchData(sport).then(
+      data => dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: { data } }),
       () => dispatch({ type: ACTIONS.FETCH_ERROR }),
     );
-  }, [asyncCallback, sport]);
+  }, [sport]);
+
+  useEffect(() => {
+    const key = data?.sport;
+
+    if (key) {
+      cache.set(key, data);
+    }
+  }, [data]);
 
   return [state, dispatch];
 };

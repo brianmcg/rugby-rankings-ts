@@ -2,12 +2,10 @@ import { I18nextProvider } from 'react-i18next';
 import { CssBaseline } from '@mui/material/';
 import { ThemeProvider } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
-import { fetchData } from '@utils/api';
 import i18n from '@utils/i18n';
 import theme from '@utils/theme';
-import { SPORTS } from '@constants/data';
 import { ACTIONS } from './actions';
-import { useAsync } from './hooks';
+import { useFetchData } from './hooks';
 import Header from './components/Header';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
 import Main from './components/Main';
@@ -15,18 +13,11 @@ import Footer from './components/Footer';
 import MatchModal from './components/MatchModal';
 import type { Sport, AppMatch } from '@constants/types';
 
-const initialState = {
-  data: null,
-  initialData: null,
-  isError: false,
-  isLoading: true,
-  selectedMatch: null,
-  sport: SPORTS.MENS,
-};
-
 export default function App() {
-  const [state, dispatch] = useAsync(fetchData, initialState);
+  const [state, dispatch] = useFetchData();
+
   const { data, initialData, selectedMatch, sport, isLoading, isError } = state;
+
   const {
     label = '',
     startDate = new Date(),
@@ -35,8 +26,6 @@ export default function App() {
     rankings = [],
     matches = [],
   } = data ?? {};
-
-  const fetchedMatches = (initialData ?? {})[sport]?.matches ?? [];
 
   const changeSport = (sport: Sport) =>
     dispatch({
@@ -94,7 +83,9 @@ export default function App() {
             startDate={startDate}
             disabled={isLoading || isError}
             onCreateMatch={createMatch}
-            onResetMatches={() => updateMatches(fetchedMatches)}
+            onResetMatches={() =>
+              updateMatches((initialData ?? {})[sport]?.matches ?? [])
+            }
             onClearMatches={() => updateMatches([])}
           />
           <Main
