@@ -1,4 +1,4 @@
-export enum MATCH_STATUSES {
+export enum MatchStatus {
   COMPLETE = 'C',
   UPCOMING = 'U',
 }
@@ -8,7 +8,7 @@ export enum SPORTS {
   WOMENS = 'wru',
 }
 
-export enum COUNTRIES {
+export enum Country {
   NORTHERN_IRELAND = 'Northern Ireland',
   IRELAND = 'Ireland',
   UKRAINE = 'Ukraine',
