@@ -59,7 +59,6 @@ export default function Matches({
         {matches.length ? (
           <Box>
             <List sx={{ p: 0 }}>
-              {' '}
               {matches.map(match => (
                 <ListItem sx={{ p: 1 }} key={match.matchId}>
                   <Match
