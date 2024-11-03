@@ -104,9 +104,9 @@ export default function App() {
           <Footer />
         </Stack>
         <MatchModal
-          match={selectedMatch!}
+          match={selectedMatch}
           teams={teams}
-          endDate={endDate!}
+          endDate={endDate}
           unselectMatch={unselectMatch}
           addMatch={addMatch}
           updateMatch={updateMatch}

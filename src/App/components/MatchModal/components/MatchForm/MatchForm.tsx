@@ -1,31 +1,32 @@
 import { useReducer, SyntheticEvent, ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Translate from '@components/Translate';
 import LabelSwitch from '@components/LabelSwitch';
+import { NEW_MATCH, TODAY } from '@constants/defaults';
 import { ACTIONS } from './actions';
 import { matchReducer } from './reducers';
 import EntryInput from './components/EntryInput';
-import { useTranslation } from 'react-i18next';
 import type { AppMatch, Team } from '@constants/types';
 
 type Props = {
-  match: AppMatch;
+  match?: AppMatch | null;
   teams: Array<Team>;
-  endDate: Date;
+  endDate?: Date;
   addMatch: (match: AppMatch) => void;
   updateMatch: (match: AppMatch) => void;
 };
 
 export default function MatchForm({
   match,
+  endDate = TODAY,
   teams,
-  endDate,
   addMatch,
   updateMatch,
 }: Props) {
-  const [state, dispatch] = useReducer(matchReducer, match);
+  const [state, dispatch] = useReducer(matchReducer, match ?? NEW_MATCH);
   const {
     homeTeam,
     awayTeam,

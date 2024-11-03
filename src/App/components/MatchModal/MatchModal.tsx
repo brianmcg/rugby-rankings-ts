@@ -21,9 +21,9 @@ const style = {
 };
 
 type Props = {
-  match: AppMatch;
+  match?: AppMatch | null;
   teams: Array<Team>;
-  endDate: Date;
+  endDate?: Date;
   unselectMatch: () => void;
   addMatch: (match: AppMatch) => void;
   updateMatch: (match: AppMatch) => void;
@@ -37,19 +37,15 @@ export default function MatchModal({
   addMatch,
   updateMatch,
 }: Props) {
-  const isOpen = Boolean(match);
-
-  const onClose = () => unselectMatch();
-
   return (
     <Modal
-      open={isOpen}
-      onClose={onClose}
+      open={Boolean(match)}
+      onClose={unselectMatch}
       closeAfterTransition
       slots={{ backdrop: Backdrop }}
       slotProps={{ backdrop: { timeout: 500 } }}
     >
-      <Fade in={isOpen}>
+      <Fade in={Boolean(match)}>
         <Box sx={style}>
           <Stack
             direction="row"
@@ -65,13 +61,12 @@ export default function MatchModal({
             <IconButton
               color="primary"
               sx={{ p: 0, '&:hover': { color: 'error.main' } }}
-              onClick={onClose}
+              onClick={unselectMatch}
               size="small"
             >
               <CancelIcon />
             </IconButton>
           </Stack>
-
           <MatchForm
             match={match}
             teams={teams}

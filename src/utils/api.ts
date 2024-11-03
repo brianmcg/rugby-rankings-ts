@@ -3,6 +3,8 @@ import type { AxiosResponse } from 'axios';
 import { formatApiDate, addDays, getPreviousMonday } from '@utils/date';
 import { parseMatches } from '@utils/parsers';
 import { RANKINGS, FIXTURES, TEAMS } from '@constants/urls';
+import { TODAY } from '@constants/defaults';
+
 import type {
   Team,
   Rankings,
@@ -14,8 +16,6 @@ import type {
 } from '@constants/types';
 
 const DELAY_API_REQUESTS = false;
-
-const TODAY = new Date();
 
 const sleep = (millis: number) =>
   new Promise(resolve => setTimeout(resolve, millis));
